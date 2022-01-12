@@ -1,11 +1,21 @@
-## My Project
+# wav2vec2-huggingface-sagemaker
+**Fine-tune and deploy Wav2Vec2 model for speech recognition with HuggingFace and SageMaker**
 
-TODO: Fill this README out!
+In this repository, we use TIMIT dataset that available from Hugging Face Datasets library, and fine-tune the Wav2Vec2 model and deploy it as SageMaker endpoint for real-time inference for an ASR task. 
+<img src="images/solution_overview.png">
 
-Be sure to:
+First of all, we show how to load and preprocess the TIMIT dataset in SageMaker environment in order to obtain tokenizer and feature extractor, which are required for fine-tuning the Wav2Vec2 model. Then we use SageMaker Script Mode for training and inference steps, that allows you to define and use custom training and inference scripts and SageMaker provides supported Hugging Face framework Docker containers. For more information about training and serving Hugging Face models on SageMaker, see Use [Hugging Face with Amazon SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/hugging-face.html). This functionality is available through the development of Hugging Face [AWS Deep Learning Container (DLC)](https://docs.aws.amazon.com/deep-learning-containers/latest/devguide/what-is-dlc.html). 
 
-* Change the title in this README
-* Edit your repository description on GitHub
+This notebook is tested in both SageMaker Studio and SageMaker Notebook environments. Below shows detailed setup.   
+- SageMaker Studio: **ml.m5.xlarge** instance with **Data Science** kernel.
+- SageMaker Notebook: **ml.m5.xlarge** instance with **conda_python3** kernel. 
+
+## Requirements
+
+* sagemaker>=2.31.0
+* transformers = 4.6.1
+* pytorch = 1.7.1
+* jiwer
 
 ## Security
 
