@@ -1,8 +1,13 @@
-from transformers import Wav2Vec2ForCTC, Trainer, TrainingArguments, Wav2Vec2CTCTokenizer, Wav2Vec2FeatureExtractor, Wav2Vec2Processor
-from datasets import load_from_disk, load_dataset, load_metric
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional, Union
-import random
+from transformers import (
+    Wav2Vec2ForCTC, 
+    Trainer, 
+    TrainingArguments, 
+    Wav2Vec2CTCTokenizer, 
+    Wav2Vec2FeatureExtractor, 
+    Wav2Vec2Processor)
+from datasets import load_from_disk, load_metric
+from dataclasses import dataclass
+from typing import Dict, List, Optional, Union
 import logging
 import sys
 import argparse
@@ -17,9 +22,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # hyperparameters sent by the client are passed as command-line arguments to the script.
-    parser.add_argument("--epochs", type=int, default=30)
-    parser.add_argument("--train_batch_size", type=int, default=32)
-    parser.add_argument("--eval_batch_size", type=int, default=32)
+    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--train_batch_size", type=int, default=8)
+    parser.add_argument("--eval_batch_size", type=int, default=8)
     parser.add_argument("--warmup_steps", type=int, default=500)
     parser.add_argument("--model_name", type=str, default="facebook/wav2vec2-base")
     parser.add_argument("--learning_rate", type=str, default=1e-4)
@@ -164,9 +169,9 @@ if __name__ == "__main__":
         evaluation_strategy="steps",
         num_train_epochs=args.epochs,
         fp16=True, # enable mixed-precision training
-        save_steps=500,
-        eval_steps=500,
-        logging_steps=500,
+        save_steps=50,
+        eval_steps=50,
+        logging_steps=50,
         learning_rate=float(args.learning_rate),
         weight_decay=float(args.weight_decay),
         warmup_steps=args.warmup_steps,

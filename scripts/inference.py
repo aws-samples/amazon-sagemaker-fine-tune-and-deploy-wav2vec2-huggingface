@@ -1,13 +1,9 @@
 import logging
 import json
 import torch
-import os
-import re
-import numpy as np
 
 from transformers import Wav2Vec2ForCTC 
 from transformers import Wav2Vec2Processor
-
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
