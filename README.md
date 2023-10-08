@@ -12,11 +12,11 @@ This notebook is tested in both SageMaker Studio and SageMaker Notebook environm
 
 ## Requirements
 
-* sagemaker version: 2.78.0
-* transformers version: 4.6.1
-* datasets version: 1.18.4
-* s3fs version: 2022.02.0
-* pytorch version: 1.7.1
+* sagemaker version: 2.191.0
+* transformers version: 4.34.0
+* datasets version: 2.8.0
+* s3fs version: 2023.9.2
+* torch version: 2.1.0
 * jiwer
 * soundfile
 

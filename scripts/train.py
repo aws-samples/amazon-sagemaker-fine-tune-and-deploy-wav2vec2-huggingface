@@ -15,6 +15,7 @@ import os
 import torch
 import numpy as np
 import boto3
+import datasets
  
 
 if __name__ == "__main__":
@@ -23,8 +24,8 @@ if __name__ == "__main__":
 
     # hyperparameters sent by the client are passed as command-line arguments to the script.
     parser.add_argument("--epochs", type=int, default=10)
-    parser.add_argument("--train_batch_size", type=int, default=8)
-    parser.add_argument("--eval_batch_size", type=int, default=8)
+    parser.add_argument("--train_batch_size", type=int, default=2)
+    parser.add_argument("--eval_batch_size", type=int, default=2)
     parser.add_argument("--warmup_steps", type=int, default=500)
     parser.add_argument("--model_name", type=str, default="facebook/wav2vec2-base")
     parser.add_argument("--learning_rate", type=str, default=1e-4)
@@ -52,6 +53,8 @@ if __name__ == "__main__":
     # load datasets
     print(args.training_dir)
     print(args.test_dir)
+    print(datasets.__version__)
+    
     train_dataset = load_from_disk(args.training_dir)
     test_dataset = load_from_disk(args.test_dir)
 
