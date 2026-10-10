@@ -1,2 +1,2 @@
-datasets==2.8.0
+datasets==5.0.1
 jiwer
